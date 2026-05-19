@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, X, User, Copy, Check, Info } from 'lucide-react';
+import { Search, X, User, Copy, Check, Info, GraduationCap, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useNISNData, useSearch } from './hooks/useNISNData';
 import { cn } from './lib/utils';
@@ -12,9 +12,21 @@ const Header = () => (
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="w-16 h-16 bg-blue-600 rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-blue-200 dark:shadow-none mb-4"
+      className="w-24 h-24 bg-white dark:bg-slate-800 rounded-full mx-auto flex items-center justify-center shadow-xl mb-4 overflow-hidden border-2 border-blue-50 dark:border-slate-700"
     >
-      <div className="text-white font-extrabold text-2xl">Madani</div>
+      <img 
+        src="/logo.png" 
+        alt="Madani Logo" 
+        className="w-full h-full object-contain p-1"
+        onError={(e) => {
+          const target = e.currentTarget;
+          target.parentElement!.style.backgroundColor = '#2563eb'; // blue-600
+          target.style.display = 'none';
+          const icon = document.createElement('div');
+          icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>';
+          target.parentElement!.appendChild(icon.firstChild!);
+        }}
+      />
     </motion.div>
     <motion.h1 
       initial={{ y: 10, opacity: 0 }}
@@ -22,7 +34,7 @@ const Header = () => (
       transition={{ delay: 0.2 }}
       className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white"
     >
-      NISN SDS Madani
+      Madani NISN Search
     </motion.h1>
     <motion.p 
       initial={{ y: 10, opacity: 0 }}
@@ -30,7 +42,7 @@ const Header = () => (
       transition={{ delay: 0.3 }}
       className="text-slate-500 dark:text-slate-400 text-sm mt-1"
     >
-      Cek NISN SDS Madani 2026
+      Pusat Pencarian Data Siswa 2026
     </motion.p>
   </header>
 );
@@ -160,6 +172,38 @@ const EmptyState = ({ query, hasData }: { query: string, hasData: boolean }) => 
   </div>
 );
 
+const ConfirmationSection = () => (
+  <motion.div 
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.4 }}
+    className="px-6 mb-8 max-w-md mx-auto w-full"
+  >
+    <div className="bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 rounded-2xl p-5 relative overflow-hidden group">
+      <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+        <Check className="w-12 h-12 text-blue-600" />
+      </div>
+      <div className="relative z-10">
+        <h4 className="text-sm font-bold text-blue-900 dark:text-blue-300 mb-1 flex items-center gap-2">
+          Sudah dapat NISN?
+        </h4>
+        <p className="text-xs text-blue-700/80 dark:text-blue-400/80 mb-4 leading-relaxed">
+          Jika Anda sudah menemukan NISN Anda, silakan lakukan konfirmasi data melalui link resmi di bawah ini.
+        </p>
+        <a 
+          href="https://ijazah.pendidikan.go.id/konfirmasi-data" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-md shadow-blue-200 dark:shadow-none active:scale-95"
+        >
+          Konfirmasi Data
+          <ExternalLink className="w-3 h-3" />
+        </a>
+      </div>
+    </div>
+  </motion.div>
+);
+
 // --- Main App ---
 
 export default function App() {
@@ -186,6 +230,8 @@ export default function App() {
           onChange={setQuery} 
           onClear={() => setQuery('')} 
         />
+
+        <ConfirmationSection />
 
         <main className="px-4">
           {loading ? (
