@@ -30,9 +30,11 @@ jobs:
           node-version: 20
           cache: 'npm'
       - name: Install dependencies
-        run: npm install
+        run: npm install || npm install --legacy-peer-deps
       - name: Build
-        run: npm run build
+        run: |
+          npm run build
+        continue-on-error: false
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
