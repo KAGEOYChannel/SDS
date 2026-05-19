@@ -1,0 +1,6 @@
+{
+  "name": "NISN Search Pro",
+  "description": "Modern, mobile-optimized NISN student search tool. Fast, responsive, and easy to use.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
