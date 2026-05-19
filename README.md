@@ -26,16 +26,24 @@ The file should have at least the following columns:
 
 ### 2. Updating Data
 To update the student database:
-1. Open the `public/` directory.
+1. Open the `public/` directory in your source code.
 2. Replace the existing `data.xlsx` with your new file.
 3. Ensure the filename remains `data.xlsx`.
 4. The application will automatically pick up the new data on the next reload.
 
-## Deployment
-This app is built with React and Vite. To deploy:
-1. Run `npm run build`.
-2. Serve the contents of the `dist/` folder.
-3. Ensure the `data.xlsx` file stays in the same relative path as when it was in the `public/` folder.
+## Cara Men-deploy ke GitHub (PENTING)
+
+Agar aplikasi tampil (tidak layar putih), ikuti langkah ini:
+
+1. **Upload Kode ke GitHub**: Upload semua file proyek ini ke repositori GitHub Anda.
+2. **Aktifkan GitHub Actions**:
+   - Buka repositori Anda di browser.
+   - Klik tab **Settings** -> **Pages**.
+   - Di bagian **Build and deployment** > **Source**, pilih **GitHub Actions**.
+3. **Selesai**: Setiap kali Anda update kode atau file `data.xlsx` di branch `main`, GitHub akan otomatis melakukan build dan update website Anda.
+
+### Lokasi File Data
+Simpan file data Anda di `/public/data.xlsx`. Website akan secara otomatis membaca kolom "Nama" dan "NISN" dari file tersebut.
 
 ## Development
 - `npm install`: Install dependencies.

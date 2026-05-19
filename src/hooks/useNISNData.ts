@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { loadExcelData, StudentData } from '../lib/excel';
+import { loadExcelData, type StudentData } from '../lib/excel';
 
 export function useNISNData() {
   const [data, setData] = useState<StudentData[]>([]);

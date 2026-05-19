@@ -10,7 +10,27 @@
     <title>NISN Search Pro - Cari Data Siswa</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="fallback-message" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; color: #64748b; text-align: center; padding: 20px;">
+        <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 8px;">NISN Search Pro</div>
+        <div>Memuat aplikasi...</div>
+        <div id="error-display" style="margin-top: 20px; color: #ef4444; font-size: 0.8rem; font-family: monospace; white-space: pre-wrap; max-width: 80vw;"></div>
+      </div>
+    </div>
+    <script>
+      window.addEventListener('error', function(e) {
+        var errorDisplay = document.getElementById('error-display');
+        if (errorDisplay) {
+          errorDisplay.textContent = 'Error: ' + e.message + '\nAt: ' + e.filename + ':' + e.lineno;
+        }
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        var errorDisplay = document.getElementById('error-display');
+        if (errorDisplay) {
+          errorDisplay.textContent = 'Promise Error: ' + e.reason;
+        }
+      });
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

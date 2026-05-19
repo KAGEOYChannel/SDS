@@ -83,8 +83,9 @@ const ResultCard = ({ student }: ResultCardProps) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const initials = student.nama
+  const initials = (student.nama || 'Siswa')
     .split(' ')
+    .filter(Boolean)
     .map(n => n[0])
     .slice(0, 2)
     .join('')
