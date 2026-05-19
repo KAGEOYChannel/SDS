@@ -11,7 +11,7 @@ export function useNISNData() {
       try {
         setLoading(true);
         // We expect data.xlsx to be in the public folder
-        const jsonData = await loadExcelData('/data.xlsx');
+        const jsonData = await loadExcelData('data.xlsx');
         if (jsonData.length === 0) {
           // If no data or error, we might want to show a warning
           // but for now we just set it
