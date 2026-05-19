@@ -14,7 +14,7 @@ const Header = () => (
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="w-16 h-16 bg-blue-600 rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-blue-200 dark:shadow-none mb-4"
     >
-      <div className="text-white font-extrabold text-2xl">P</div>
+      <div className="text-white font-extrabold text-2xl">Madani</div>
     </motion.div>
     <motion.h1 
       initial={{ y: 10, opacity: 0 }}
@@ -22,7 +22,7 @@ const Header = () => (
       transition={{ delay: 0.2 }}
       className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white"
     >
-      NISN Search Pro
+      NISN SDS Madani
     </motion.h1>
     <motion.p 
       initial={{ y: 10, opacity: 0 }}
@@ -30,7 +30,7 @@ const Header = () => (
       transition={{ delay: 0.3 }}
       className="text-slate-500 dark:text-slate-400 text-sm mt-1"
     >
-      Data Siswa Nasional 2026
+      Cek NISN SDS Madani 2026
     </motion.p>
   </header>
 );
