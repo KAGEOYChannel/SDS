@@ -12,12 +12,12 @@ const Header = () => (
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="w-24 h-24 bg-white dark:bg-slate-800 rounded-full mx-auto flex items-center justify-center shadow-xl mb-4 overflow-hidden border-2 border-blue-50 dark:border-slate-700"
+      className="w-28 h-28 bg-white dark:bg-slate-800 rounded-full mx-auto flex items-center justify-center shadow-xl mb-4 overflow-hidden border-2 border-blue-50 dark:border-slate-700"
     >
       <img 
         src="./logo.jpeg" 
         alt="Madani Logo" 
-        className="w-full h-full object-contain p-1"
+        className="max-w-[90%] max-h-[90%] object-contain"
         onError={(e) => {
           const target = e.currentTarget;
           target.parentElement!.style.backgroundColor = '#2563eb'; // blue-600
